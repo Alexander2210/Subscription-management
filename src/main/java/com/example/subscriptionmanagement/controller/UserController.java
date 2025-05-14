@@ -1,7 +1,6 @@
 package com.example.subscriptionmanagement.controller;
 
 import com.example.subscriptionmanagement.dto.UserDTO;
-import com.example.subscriptionmanagement.entity.UserEntity;
 import com.example.subscriptionmanagement.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
+
     private final UserService userService;
 
     @PostMapping

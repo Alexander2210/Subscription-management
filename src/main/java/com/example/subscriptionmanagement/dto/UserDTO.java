@@ -1,13 +1,14 @@
 package com.example.subscriptionmanagement.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
-import java.util.List;
 
 public record UserDTO(
         Long id,
-        String name,
-        String email,
-        LocalDateTime createdAt,
-        List<Long> subscriptionIds
-) {
-}
+        @NotBlank @Size(max = 100) String name,
+        @Email String email,
+        LocalDateTime createdAt
+) {}

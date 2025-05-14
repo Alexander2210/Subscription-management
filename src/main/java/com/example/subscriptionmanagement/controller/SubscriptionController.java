@@ -2,7 +2,7 @@ package com.example.subscriptionmanagement.controller;
 
 
 import com.example.subscriptionmanagement.dto.SubscriptionDTO;
-import com.example.subscriptionmanagement.entity.SubscriptionEntity;
+import com.example.subscriptionmanagement.dto.SubscriptionRequestDTO;
 import com.example.subscriptionmanagement.service.SubscriptionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -28,14 +28,16 @@ public class SubscriptionController {
     @PostMapping
     public ResponseEntity<SubscriptionDTO> addSubscription(
             @PathVariable Long userId,
-            @Valid @RequestBody SubscriptionDTO subscriptionDTO
+            @Valid @RequestBody SubscriptionRequestDTO request
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(subscriptionService.addSubscription(userId, subscriptionDTO));
+                .body(subscriptionService.addSubscription(userId, request));
     }
 
     @GetMapping
-    public ResponseEntity<List<SubscriptionDTO>> getSubscriptions(@PathVariable Long userId) {
+    public ResponseEntity<List<SubscriptionDTO>> getSubscriptionsByUserId(
+            @PathVariable Long userId
+    ) {
         return ResponseEntity.ok(subscriptionService.getUserSubscriptions(userId));
     }
 
@@ -48,3 +50,4 @@ public class SubscriptionController {
         return ResponseEntity.noContent().build();
     }
 }
+
